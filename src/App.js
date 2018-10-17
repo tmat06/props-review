@@ -1,25 +1,36 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import Display from "./components/Display";
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      dbInfo: [
+        {
+          text: "this is dog opinion",
+          img: "https://i.ytimg.com/vi/C_lpU5DiJ0Y/maxresdefault.jpg"
+        },
+        {
+          text: "Another dog opinoin",
+          img:
+            "https://images.pexels.com/photos/356378/pexels-photo-356378.jpeg?auto=compress&cs=tinysrgb&h=350"
+        },
+        {
+          text: "The third dog opinion",
+          img:
+            "https://images.pexels.com/photos/58997/pexels-photo-58997.jpeg?auto=compress&cs=tinysrgb&h=350"
+        }
+      ]
+    };
+  }
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        {this.state.dbInfo.map((val, i) => {
+          console.log("val", val);
+          return <Display key={i} img={val.img} text={val.text} />;
+        })}
       </div>
     );
   }
